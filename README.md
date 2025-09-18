@@ -25,9 +25,9 @@ Please record any progress you have made. It's okay if you don't finish both pha
 
 [yarn](https://classic.yarnpkg.com/en/docs/install)
 [nodejs](https://nodejs.org/en/download/)
-[xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
+[xcode](https://apps.apple.com/us/app/xcode/id497799835)
 
-You may need to install the following dependencies, as described on https://reactnative.dev/docs/0.60/getting-started
+You may need to install the following dependencies, as described on https://reactnative.dev/docs/getting-started-without-a-framework
 
 ```sh
 brew install node
