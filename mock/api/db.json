@@ -15,20 +15,10 @@
   ],
   "photos": [
     {
-      "id": "11111111",
-      "memberId": 1,
-      "url": "https://collectionimages.npg.org.uk/large/mw82857/Bill-Gates.jpg",
-      "position": 0,
-      "width": 796,
-      "height": 800,
-      "centerX": 366,
-      "centerY": 408
-    },
-    {
       "id": "11111112",
       "memberId": 1,
       "url": "https://i.pinimg.com/564x/87/64/76/876476178e8cd6bcaab1269f7283d97b.jpg",
-      "position": 1,
+      "position": 6,
       "width": 480,
       "height": 768,
       "centerX": 259,
@@ -38,7 +28,7 @@
       "id": "11111113",
       "memberId": 1,
       "url": "https://media.king5.com/assets/KING/images/156daac9-f162-4c82-bb78-6edc4225d9ae/156daac9-f162-4c82-bb78-6edc4225d9ae_750x422.jpg",
-      "position": 2,
+      "position": 1,
       "width": 750,
       "height": 422,
       "centerX": 349,
@@ -62,6 +52,16 @@
       "centerX": 1000,
       "centerY": 500,
       "id": "Ixag5l0"
+    },
+    {
+      "url": "file:///data/user/0/com.app/cache/rn_image_picker_lib_temp_3708e69c-e3a9-4bcd-921e-c5d96ef7c72d.jpg",
+      "width": 365,
+      "height": 547,
+      "position": 2,
+      "centerX": 182.5,
+      "centerY": 273.5,
+      "memberId": "1",
+      "id": "9bLWTCZ"
     }
   ]
 }

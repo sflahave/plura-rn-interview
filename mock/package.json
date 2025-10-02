@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "mock": "json-server --watch api/db.json --port 3000"
+    "mock": "json-server --watch api/db.json --port 3000 --host 192.168.1.13"
   },
   "author": "",
   "dependencies": {

@@ -1,6 +1,12 @@
+import { Platform } from 'react-native';
 import { APIPhoto, APIPhotoBase } from '../types/api';
 
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL =
+  Platform.OS === 'android'
+    ? 'http://192.168.1.13:3000'
+    : 'http://localhost:3000';
+
+console.log("API_BASE_URL", API_BASE_URL);
 
 export async function loadMemberPhotos(memberId: string): Promise<APIPhoto[]> {
   const response = await fetch(`${API_BASE_URL}/member/${memberId}/photos`);
