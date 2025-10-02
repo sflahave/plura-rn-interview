@@ -1,10 +1,6 @@
-import { Platform } from 'react-native';
 import { APIPhoto, APIPhotoBase } from '../types/api';
 
-const API_BASE_URL =
-  Platform.OS === 'android'
-    ? 'http://192.168.1.13:3000'
-    : 'http://localhost:3000';
+const API_BASE_URL = 'http://192.168.1.13:3000'
 
 console.log("API_BASE_URL", API_BASE_URL);
 
