@@ -1,97 +1,174 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Interview Project
 
-# Getting Started
+In this interview you'll build a dating profile screen and use Bill Gates' photos as example data for demo.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+This repository is a starting point for implementing an interview challenge. This should get you everything
+you need to just start working on a react-native implementation.
 
-## Step 1: Start Metro
+The starter project was created using [these steps](https://reactnative.dev/docs/0.60/getting-started). Note that React-Native-CLI was used and not Expo. If you have any troubles with tooling then start there.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+Implement the following features in the app using React Native and demo the app functionality using the ios simulator and the Android emulator.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+Once you're finished with the implementation, record a screen capture demo of the requirements. If you
+can, please walk us through your demo with a mic. You can use Quicktime "New screen recording" or any other
+video screen capture system or [Loom](https://www.loom.com/).
 
-```sh
-# Using npm
-npm start
+Deliverable: Email us the following (please do not open a pull request):
 
-# OR using Yarn
-yarn start
-```
+- Link to your code implementation on a public github repository
+- Video file for demo screen capture
 
-## Step 2: Build and run your app
+Be sure to leave 5-10 minutes at the end to record and send your screen capture and send the Github link.
+Please record any progress you have made. It's okay if you don't finish both phases.
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## Tools & Dependencies
 
-### Android
+[yarn](https://classic.yarnpkg.com/en/docs/install)
+[nodejs](https://nodejs.org/en/download/)
+[xcode](https://apps.apple.com/us/app/xcode/id497799835)
 
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+You may need to install the following dependencies, as described on https://reactnative.dev/docs/getting-started-without-a-framework
 
 ```sh
-bundle install
+brew install node
+brew install watchman
+sudo gem install cocoapods
 ```
 
-Then, and every time you update your native dependencies, run:
+## Steps to Get Started
+
+Shell 1 - Starting your mock API server
 
 ```sh
-bundle exec pod install
+cd mock
+yarn install
+yarn run mock
+# Server will now be running at http://localhost:3000
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+_Note_: Any data saved to the mock server will be saved to [mock/api/db.json](mock/api/db.json).
+
+Shell 2 - you can run the iOS simulator and develop your app here
 
 ```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+cd app
+yarn install
+npx pod-install
+yarn run ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## Requirements
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+### Phase 1
 
-## Step 3: Modify your app
+Build a single screen for Viewing and Editing the Photos of a users profile. This should look like
+Tinder's Edit your Profile screen, which includes thumbnails of each photo in a grid of 3 wide by 3 high.
 
-Now that you have successfully run the app, let's make changes!
+- Add new photo
+  - Add a new photo.
+  - You can hard code a URL of a photo from the internet in the event handling code or use the camera. Whatever works to get a new photo in the appropriate data format and display.
+- Remove photos
+  - Remove a photo from the profile.
+- Rearrange photos
+  - The profile will show the photos in order. Give users a way to rearrange the order.
+- The above functionality should query a backend service. The service API is as defined below.
+  - This API is simulated at http://localhost:3000. See the mock directory above.
+  - Example data can be found with memberId 1. i.e. http://localhost:3000/member/1/photos
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+#### API Response Types
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+```typescript
+interface APIMember {
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+}
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+interface APIPhotoBase {
+    url: string;
+    width: number;
+    height: number;
+    position: number;
+    centerX: number;
+    centerY: number;
+}
 
-## Congratulations! :tada:
+interface APIPhoto = APIPhotoBase & {
+    id: string;
+    memberId: number;
+}
+```
 
-You've successfully run and modified your React Native App. :partying_face:
+#### API definition
 
-### Now what?
+**GET /member/{memberId}/photos**
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+```
+curl http://localhost:3000/member/1/photos
+```
 
-# Troubleshooting
+200 response:
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+```typescript
+interface APIGetPhotosResponse = APIPhoto[];
+```
 
-# Learn More
+**POST /member/{memberId}/photos**
 
-To learn more about React Native, take a look at the following resources:
+```sh
+curl -H "Content-Type: application/json" -X POST http://localhost:3000/member/2/photos -d '{"url":"https://miro.medium.com/max/2000/1*KvhM-ArA5RkpYLi7L_Qtdw.jpeg","position": 1, "width": 2000,"height": 1000, "centerX": 1000, "centerY": 500}'
+```
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Request Parameters:
+
+```typescript
+interface APIAddMemberPhotoRequest = APIPhotoBase
+```
+
+200 response type:
+
+```typescript
+interface APIAddMemberPhotoResponse = APIPhoto
+```
+
+**PUT /photos/{id}**
+
+```sh
+curl -H "Content-Type: application/json" -X PUT http://localhost:3000/photos/dK4-OYy -d '{"url":"https://miro.medium.com/max/2000/1*KvhM-ArA5RkpYLi7L_Qtdw.jpeg","position": 2, "width": 2000,"height": 1000, "centerX": 1000, "centerY": 500}'
+```
+
+Request Parameters:
+
+```typescript
+interface APIUpdateMemberPhotoRequest = APIPhotoBase
+```
+
+200 response type:
+
+```typescript
+interface APIUpdateMemberPhotoResponse = APIPhoto
+```
+
+**DELETE /photos/{id}**
+
+```sh
+curl -X DELETE http://localhost:3000/photos/dK4-OYy
+```
+
+200 response type:
+
+```typescript
+interface APIDeletePhotosResponse {}
+```
+
+If needed, additional documentation can be found at https://github.com/typicode/json-server
+
+### Phase 2
+
+Iterate on your initial implementation to include the following changes. This will improve
+the profile by having each photo specify where in the photo the center is located. Scale and
+translate the photo as necessary to put the photo's center in the middle of the display frame.
+
+- Implement custom offset based on the center of each photo (denoted by `centerX` and `centerY` in the `APIPhoto` type).
+- Photos should be scaled accordingly to fill the frame when offset to center.

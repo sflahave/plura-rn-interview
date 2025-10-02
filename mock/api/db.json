@@ -15,16 +15,6 @@
   ],
   "photos": [
     {
-      "id": "11111111",
-      "memberId": 1,
-      "url": "https://collectionimages.npg.org.uk/large/mw82857/Bill-Gates.jpg",
-      "position": 0,
-      "width": 796,
-      "height": 800,
-      "centerX": 366,
-      "centerY": 408
-    },
-    {
       "id": "11111112",
       "memberId": 1,
       "url": "https://i.pinimg.com/564x/87/64/76/876476178e8cd6bcaab1269f7283d97b.jpg",
@@ -56,12 +46,43 @@
     },
     {
       "url": "https://miro.medium.com/max/2000/1*KvhM-ArA5RkpYLi7L_Qtdw.jpeg",
+      "memberId": 2,
       "position": 2,
       "width": 2000,
       "height": 1000,
       "centerX": 1000,
       "centerY": 500,
       "id": "Ixag5l0"
+    },
+    {
+      "url": "file:///Users/shawnflahave/Library/Developer/CoreSimulator/Devices/A6612296-63DB-47AB-9BB2-3FCD54A6CB2A/data/Containers/Data/Application/1932ECFF-A873-4BE4-ADF3-2381AC2E0541/tmp/420E611F-BBC9-47CC-B737-F8776104F7F4.jpg",
+      "width": 365,
+      "height": 547,
+      "position": 0,
+      "centerX": 182.5,
+      "centerY": 273.5,
+      "memberId": "1",
+      "id": "8aDQm8v"
+    },
+    {
+      "url": "file:///Users/shawnflahave/Library/Developer/CoreSimulator/Devices/A6612296-63DB-47AB-9BB2-3FCD54A6CB2A/data/Containers/Data/Application/1932ECFF-A873-4BE4-ADF3-2381AC2E0541/tmp/00E94531-5485-493E-9F9E-AE4DAD7FD08A.jpg",
+      "width": 588,
+      "height": 393,
+      "position": 3,
+      "centerX": 294,
+      "centerY": 196.5,
+      "memberId": "1",
+      "id": "Bisxp33"
+    },
+    {
+      "url": "file:///Users/shawnflahave/Library/Developer/CoreSimulator/Devices/A6612296-63DB-47AB-9BB2-3FCD54A6CB2A/data/Containers/Data/Application/1932ECFF-A873-4BE4-ADF3-2381AC2E0541/tmp/C3019DFA-2751-4C72-8170-DF50E86C63FB.jpg",
+      "width": 420,
+      "height": 476,
+      "position": 4,
+      "centerX": 210,
+      "centerY": 238,
+      "memberId": "1",
+      "id": "LwsfodL"
     }
   ]
 }
